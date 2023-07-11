@@ -14,15 +14,13 @@ $rootQuery = new ObjectType([
                 'id' => Type::nonNull(Type::int())
             ],
             'resolve' => function($root, $args) {
-                $user = User::find($args["id"])->toArray();
-                return $user;
+                return User::find($args['id'])->toArray();
             }
         ],
         'users' => [
             'type' => Type::listOf($userType),
             'resolve' => function($root, $args) {
-                $users = User::get()->toArray();
-                return $users;
+                return User::get()->toArray();
             }
         ],
         'address' => [
@@ -31,8 +29,7 @@ $rootQuery = new ObjectType([
                 'id' => Type::nonNull(Type::int())
             ],
             'resolve' => function($root, $args) {
-                $address = Address::find($args["id"])->toArray();
-                return $address;
+                return Address::find($args['id'])->toArray();
             }
         ]
     ]

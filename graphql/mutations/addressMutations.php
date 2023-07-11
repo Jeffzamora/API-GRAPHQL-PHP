@@ -11,14 +11,13 @@ $addressMutations = [
             'name' => Type::nonNull(Type::string()),
             'description' => Type::nonNull(Type::string())   
         ],
-        'resolve' => function($root, $args) {
-            $address = new Address([
+        'resolve' => function ($root, $args) {
+            $address = Address::create([
                 'user_id' => $args['user_id'],
                 'name' => $args['name'],
                 'description' => $args['description']
             ]);
 
-            $address->save();
             return $address->toArray();
         }
     ]
